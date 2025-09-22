@@ -9,9 +9,12 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.2.3",
     "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.57.4",
     "@uploadthing/react": "^7.3.3",
+    "@uppy/core": "^3.7.0",
+    "@uppy/tus": "^3.5.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.544.0",

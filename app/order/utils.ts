@@ -19,7 +19,7 @@ export const formatFileSize = (bytes: number) => {
 
 export const toTitleCase = (value: string) => value.charAt(0).toUpperCase() + value.slice(1);
 
-export const makeFileId = () => {
+export const makeLocalFileId = () => {
   if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
     return crypto.randomUUID();
   }

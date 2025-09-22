@@ -15,7 +15,8 @@ export type FileConfig = {
 };
 
 export type PrintFileEntry = {
-  id: string;
+  localId: string;
+  fileId?: string;
   file: File;
   config: FileConfig;
   createdAt: number;
@@ -27,11 +28,4 @@ export type UploadState = {
   progress: number;
   status: UploadStatus;
   error?: string;
-};
-
-export type OrderFilePayload = {
-  id: string;
-  name: string;
-  size: number;
-  config: FileConfig;
 };

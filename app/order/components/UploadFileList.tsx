@@ -16,17 +16,17 @@ type UploadFileListProps = {
 const UploadFileList = ({ files, selectedId, onSelect, uploadStates }: UploadFileListProps) => (
   <ul className="flex flex-1 flex-col gap-2 overflow-y-auto pr-1">
     {files.map((entry) => {
-      const uploadState = uploadStates[entry.id];
+      const uploadState = uploadStates[entry.localId];
       const hasProgress = uploadState && uploadState.status !== 'idle';
 
       return (
-        <li key={entry.id}>
+        <li key={entry.localId}>
           <button
             type="button"
-            onClick={() => onSelect(entry.id)}
+            onClick={() => onSelect(entry.localId)}
             className={clsx(
               'flex w-full items-center gap-4 rounded-md border px-4 py-3 text-left transition',
-              selectedId === entry.id
+              selectedId === entry.localId
                 ? 'border-primary bg-primary/5 text-foreground'
                 : 'border-border bg-card hover:border-primary/60 hover:bg-muted',
             )}
