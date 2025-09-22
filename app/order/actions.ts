@@ -22,6 +22,7 @@ const fileSchema = z.object({
   name: z.string(),
   size: z.number().nonnegative(),
   config: configSchema,
+  originalName: z.string().optional(),
 });
 
 const updateOrderSchema = z.object({
@@ -57,6 +58,7 @@ const persistOrderFiles = async (
       .insert({
         order_id: orderId,
         config: file.config,
+        original_name: file.originalName || file.name,
       })
       .select("id")
       .single();

@@ -1,15 +1,18 @@
-import { notFound, redirect } from "next/navigation";
+import type { ReactNode } from "react";
+import { notFound } from "next/navigation";
 
 import { getOrderById } from "../data";
 import { orderIdParamSchema } from "../schema";
 
-type OrderStatusRedirectPageProps = {
+type OrderLayoutProps = {
+  children: ReactNode;
   params: Promise<{ id: string }>;
 };
 
-export default async function OrderStatusRedirectPage({
+export default async function OrderLayout({
+  children,
   params,
-}: OrderStatusRedirectPageProps) {
+}: OrderLayoutProps) {
   const resolvedParams = await params;
   const parsed = orderIdParamSchema.safeParse(resolvedParams);
 
@@ -23,5 +26,5 @@ export default async function OrderStatusRedirectPage({
     notFound();
   }
 
-  redirect(`/order/${order.id}/${order.status}`);
+  return <>{children}</>;
 }

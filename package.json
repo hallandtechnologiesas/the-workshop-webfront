@@ -10,11 +10,8 @@
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
-    "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.57.4",
-    "@uploadthing/react": "^7.3.3",
-    "@uppy/core": "^3.7.0",
-    "@uppy/tus": "^3.5.1",
+    "@tanstack/react-query": "^5.90.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.544.0",
@@ -22,7 +19,7 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "tailwind-merge": "^3.3.1",
-    "uploadthing": "^7.7.4",
+    "tus-js-client": "^4.3.1",
     "zod": "^4.1.11"
   },
   "devDependencies": {
