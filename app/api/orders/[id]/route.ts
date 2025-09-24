@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
-import { orderIdParamSchema } from "@/app/order/schema";
-import type { FileConfig } from "@/app/order/types";
+import { orderIdParamSchema } from "@/app/(navbar)/order/schema";
+import type { FileConfig } from "@/app/(navbar)/order/types";
 import { supabase } from "@/utils/supabase/server";
 
 export async function GET(

@@ -17,7 +17,7 @@ export default async function OrderRedirectPage() {
   const orderId = await safeOrderId();
 
   if (orderId) {
-    redirect(`/order/${orderId}`);
+    redirect(`/order/${orderId}/uploading`);
   }
 
   return (
