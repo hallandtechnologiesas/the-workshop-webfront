@@ -54,7 +54,7 @@ const UploadDropzone = ({
       >
         Browse files
       </button>
-      <input ref={fileInputRef} type="file" accept={accept} multiple className="hidden" onChange={handleChange} />
+      <input ref={fileInputRef} type="file" multiple className="hidden" onChange={handleChange} />
     </div>
   );
 };
