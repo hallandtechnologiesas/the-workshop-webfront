@@ -15,7 +15,7 @@ import {
 import AdvancedOptions from "../components/AdvancedOptions";
 import UploadFileList from "../components/UploadFileList";
 import UploadDropzone from "../components/UploadDropzone";
-import { PRESET_DEFAULTS } from "../constants";
+import { PRESET_DEFAULTS, PRESET_OPTIONS } from "../constants";
 import { createDefaultConfig, makeLocalFileId } from "../utils";
 import type {
   MaterialType,
@@ -576,15 +576,44 @@ export default function OrderUploadClient({
           </div>
 
           {selectedFile ? (
-            <AdvancedOptions
-              selectedFile={selectedFile}
-              showAdvanced={showAdvanced}
-              onToggle={() => setShowAdvanced((prev) => !prev)}
-              onPresetSelect={handlePresetSelect}
-              onOverrideChange={handleOverrideChange}
-              onMaterialSelect={handleMaterialSelect}
-              onColorSelect={handleColorSelect}
-            />
+            <>
+              <section className="space-y-4">
+                <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Preset</h3>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {PRESET_OPTIONS.map((preset) => {
+                    const isActive = preset.value === selectedFile.config.preset;
+                    return (
+                      <button
+                        key={preset.value}
+                        type="button"
+                        onClick={() => handlePresetSelect(preset.value)}
+                        className={clsx(
+                          'flex h-full flex-col items-start gap-1 rounded-lg border px-4 py-3 text-left transition',
+                          isActive ? 'border-primary bg-primary/5 text-foreground' : 'border-border hover:border-primary/60 hover:bg-muted',
+                        )}
+                      >
+                        <span className="text-sm font-medium">{preset.label}</span>
+                        <span className="text-xs text-muted-foreground">{preset.description}</span>
+                        <div className="mt-2 flex gap-4 text-xs text-muted-foreground">
+                          <span>Layer {PRESET_DEFAULTS[preset.value].layerHeight}mm</span>
+                          <span>Walls {PRESET_DEFAULTS[preset.value].walls}</span>
+                          <span>Infill {PRESET_DEFAULTS[preset.value].infill}%</span>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </section>
+
+              <AdvancedOptions
+                selectedFile={selectedFile}
+                showAdvanced={showAdvanced}
+                onToggle={() => setShowAdvanced((prev) => !prev)}
+                onOverrideChange={handleOverrideChange}
+                onMaterialSelect={handleMaterialSelect}
+                onColorSelect={handleColorSelect}
+              />
+            </>
           ) : (
             <div className="flex flex-1 flex-col items-center justify-center gap-3 rounded-lg border border-dashed border-muted-foreground/30 p-6 text-center text-sm text-muted-foreground">
               <Settings2 className="h-6 w-6" />
